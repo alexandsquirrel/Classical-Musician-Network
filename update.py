@@ -1,6 +1,7 @@
 import urllib.request
 import re
 import math
+import os
 
 '''
 Open an url and return its content as bare string.
@@ -62,6 +63,8 @@ Always starts over, because the database gets updated slowly
     so starting over should not be a huge overhead.
 '''
 def fetch_data():
+    if not os.path.exists("./data"):
+        os.mkdir("./data")
     fartist = open("./data/Artist.txt", mode="w")
     falbum = open("./data/Album.txt", mode="w")
     artists, albums = collect_data()
